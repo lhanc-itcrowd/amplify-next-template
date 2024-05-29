@@ -32,6 +32,14 @@ export default function App() {
     });
   }
 
+async function hitServerEndpoint(){
+    await fetch("/postcard").then(res=>{
+      res.json().then(message=>{
+        alert(message.data)
+      })
+    }) 
+  }
+
   return (
     <main>
       <h1>My todos</h1>
@@ -48,6 +56,8 @@ export default function App() {
           Review next steps of this tutorial.
         </a>
       </div>
+
+      <button onClick={hitServerEndpoint} style={{marginTop: "2rem"}}>Hit Server Endpoint</button>
     </main>
   );
 }
